@@ -100,6 +100,13 @@ function generateImage() {
         ctx.font = fontSize + 'px FontType3';
         ctx.fillText(lastLetter, x, y);
 
+        // Convert the canvas content to a data URL (PNG image)
+        var imageData = canvas.toDataURL('image/png');
+
+        // Display the image in the img tag
+        generatedImage.src = imageData;
+        generatedImage.style.display = 'block'; // Show the image so users can long-press to save
+
     }).catch(function(error) {
         console.error('Error loading fonts:', error);
         alert('There was an error loading the fonts. Please check the console for more details.');
