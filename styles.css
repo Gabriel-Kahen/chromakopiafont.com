@@ -64,6 +64,10 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+#downloadButton:hover {
+    background-color: #006e35;
+}
+
 @media only screen and (max-width: 768px) {
     body {
         font-size: 14px;
@@ -86,8 +90,13 @@ input[type="checkbox"] {
         margin: 5px;
     }
 
+    #downloadButton {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
     #wordCanvas {
-        max-width: 100%;
+        max-width: 100%; /* Ensure the canvas scales down on smaller screens */
         margin: 10px auto;
     }
 
