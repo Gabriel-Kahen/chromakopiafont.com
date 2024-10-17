@@ -5,6 +5,7 @@ var textColorInput = document.getElementById('textColorInput');
 var defaultTextColorCheckbox = document.getElementById('defaultTextColor');
 var bgColorInput = document.getElementById('bgColorInput');
 var bgTransparentCheckbox = document.getElementById('bgTransparent');
+var generatedImage = document.getElementById('generatedImage'); // Reference to img tag
 
 function initializeCanvas() {
     handleBgTransparency();
@@ -36,8 +37,10 @@ function generateImage() {
     var bgColor = bgColorInput.value;
     var bgTransparent = bgTransparentCheckbox.checked;
 
+    // Hide the generated image if the word has fewer than two characters
     if (word.length < 2) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        generatedImage.style.display = 'none'; // Hide image if input is invalid
         return;
     }
 
@@ -112,27 +115,6 @@ function generateImage() {
         alert('There was an error loading the fonts. Please check the console for more details.');
     });
 }
-
-function downloadImage() {
-    var word = wordInput.value.trim();
-
-    if (word.length < 2) {
-        alert('Please enter a word with at least two letters before downloading.');
-        return;
-    }
-
-    var filename = word + '.png';
-
-    var link = document.createElement('a');
-    link.download = filename;
-    link.href = canvas.toDataURL('image/png');
-
-    link.click();
-}
-
-downloadButton.addEventListener('click', function() {
-    downloadImage();
-});
 
 wordInput.addEventListener('input', function() {
     generateImage();
