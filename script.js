@@ -106,6 +106,7 @@ function generateImage() {
     });
 }
 
+// Function to download the image or open it in a new tab for iOS
 function downloadImage() {
     var word = wordInput.value.trim();
 
@@ -114,14 +115,26 @@ function downloadImage() {
         return;
     }
 
-    var filename = word + '.png';
+    // Generate the canvas as a PNG image
+    var image = canvas.toDataURL('image/png');
 
+    // Check if the browser supports the download attribute
     var link = document.createElement('a');
-    link.download = filename;
-    link.href = canvas.toDataURL('image/png');
-
-    link.click();
+    if (typeof link.download === 'string') {
+        // If the download attribute is supported, trigger the download
+        link.href = image;
+        link.download = word + '.png';
+        link.click();
+    } else {
+        // Otherwise, open the image in a new tab
+        window.open(image, '_blank');
+    }
 }
+
+// Event listener for the Download Image button
+downloadButton.addEventListener('click', function() {
+    downloadImage();
+});
 
 downloadButton.addEventListener('click', function() {
     downloadImage();
