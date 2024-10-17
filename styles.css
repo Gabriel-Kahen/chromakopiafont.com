@@ -74,43 +74,33 @@ input[type="checkbox"] {
     }
 
     h1 {
-        font-size: 22px;
-        margin: 10px;
+        font-size: 20px;
+        margin: 15px;
     }
 
-    /* Make inputs and buttons full width on smaller screens */
-    input[type="text"],
+    input[type="text"] {
+        font-size: 14px;
+        padding: 10px;
+        width: 90%;
+        max-width: 100%;
+    }
+
     input[type="color"],
     input[type="checkbox"] {
-        display: block;
-        width: 100%; /* Full width inputs on mobile */
-        max-width: 100%;
-        margin: 10px auto;
-        padding: 12px; /* Increase padding for touch-friendliness */
-    }
-
-    label {
-        font-size: 14px;
-        display: block;
-        margin: 5px auto;
-        text-align: center;
+        margin: 5px;
     }
 
     #downloadButton {
-        width: 90%; /* Full width button on mobile */
-        max-width: 100%;
         font-size: 14px;
-        padding: 12px 20px;
+        padding: 8px 16px;
     }
 
-    /* Ensure the canvas scales appropriately on small screens */
     #wordCanvas {
-        max-width: 100%; /* Full width canvas */
+        max-width: 100%;
         margin: 10px auto;
     }
 
-    /* Adjust margins and padding for spacing */
     div {
-        margin: 5px 0;
+        margin: 5px;
     }
 }
