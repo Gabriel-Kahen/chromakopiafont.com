@@ -5,11 +5,13 @@ var textColorInput = document.getElementById('textColorInput');
 var defaultTextColorCheckbox = document.getElementById('defaultTextColor');
 var bgColorInput = document.getElementById('bgColorInput');
 var bgTransparentCheckbox = document.getElementById('bgTransparent');
+var generatedImage = document.getElementById('generatedImage'); // Reference to img tag
+var downloadButton = document.getElementById('downloadButton');
 
 function initializeCanvas() {
     handleBgTransparency();
     handleTextColorDefault();
-    // generateImage();
+    generateImage();
 }
 
 function handleBgTransparency() {
@@ -36,12 +38,14 @@ function generateImage() {
     var bgColor = bgColorInput.value;
     var bgTransparent = bgTransparentCheckbox.checked;
 
+    // Hide the generated image if the word has fewer than two characters
     if (word.length < 2) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        generatedImage.style.display = 'none'; // Hide image if input is invalid
         return;
     }
 
-    var fontSize = 100; //adjust maybe
+    var fontSize = 100;
 
     var font1 = new FontFaceObserver('FontType1');
     var font2 = new FontFaceObserver('FontType2');
