@@ -45,7 +45,7 @@ input[type="checkbox"] {
     vertical-align: middle;
 }
 
-#wordCanvas {
+#generatedImage {
     display: block;
     margin: 20px auto;
     border: 1px solid #ccc;

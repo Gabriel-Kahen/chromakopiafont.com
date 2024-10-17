@@ -9,7 +9,7 @@ var bgTransparentCheckbox = document.getElementById('bgTransparent');
 function initializeCanvas() {
     handleBgTransparency();
     handleTextColorDefault();
-    generateImage();
+    // generateImage();
 }
 
 function handleBgTransparency() {
