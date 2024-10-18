@@ -34,7 +34,7 @@ function handleTextColorDefault() {
 
 function generateImage() {
     var word = wordInput.value.trim();
-    word = word.replace(/[^a-zA-Z0-9/s]/g, '').toUpperCase();
+    word = word.replace(/[^a-zA-Z0-9\s]/g, '').toUpperCase();
     var textColor = textColorInput.value;
     var bgColor = bgColorInput.value;
     var bgTransparent = bgTransparentCheckbox.checked;
