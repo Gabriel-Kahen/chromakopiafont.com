@@ -5,7 +5,7 @@ var textColorInput = document.getElementById('textColorInput');
 var defaultTextColorCheckbox = document.getElementById('defaultTextColor');
 var bgColorInput = document.getElementById('bgColorInput');
 var bgTransparentCheckbox = document.getElementById('bgTransparent');
-var generatedImage = document.getElementById('generatedImage'); // Reference to img tag
+var generatedImage = document.getElementById('generatedImage');
 var downloadButton = document.getElementById('downloadButton');
 
 function initializeCanvas() {
@@ -39,14 +39,15 @@ function generateImage() {
     var bgColor = bgColorInput.value;
     var bgTransparent = bgTransparentCheckbox.checked;
 
-    // Hide the generated image if the word has fewer than two characters
     if (word.length < 2) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        generatedImage.style.display = 'none'; // Hide image if input is invalid
+        generatedImage.style.display = 'none';
         return;
     }
 
-    var fontSize = 100;
+    var fontsize2 = 100;
+    var fontsize1 = fontsize2 * 2.5;
+    var fontsize3 = fontsize2 * 2.5;
 
     var font1 = new FontFaceObserver('FontType1');
     var font2 = new FontFaceObserver('FontType2');
@@ -54,32 +55,31 @@ function generateImage() {
 
     Promise.all([font1.load(), font2.load(), font3.load()]).then(function() {
         var firstLetter = word.charAt(0);
-        var middleLetters = word.slice(1, -1);
+        var middleLetters = word.slice(0, -1);
         var lastLetter = word.charAt(word.length - 1);
 
-        ctx.font = fontSize + 'px FontType1';
+        ctx.font = fontsize1 + 'px FontType1';
         var firstLetterWidth = ctx.measureText(firstLetter).width;
 
-        ctx.font = fontSize + 'px FontType2';
+        ctx.font = fontsize2 + 'px FontType2';
         var middleLettersWidth = ctx.measureText(middleLetters).width;
 
-        ctx.font = fontSize + 'px FontType3';
+        ctx.font = fontsize3 + 'px FontType3';
         var lastLetterWidth = ctx.measureText(lastLetter).width;
 
-        var totalTextWidth = firstLetterWidth + middleLettersWidth + lastLetterWidth;
+        var totalTextHeight = ctx.measureText(firstLetter).height
 
-        var padding = 50; //adjust maybe
+        var totalTextWidth = firstLetterWidth + middleLettersWidth + lastLetterWidth + 53;
 
+        var padding = 50;
         var contentWidth = totalTextWidth + padding * 2;
-        var contentHeight = fontSize + padding * 2;
+        var contentHeight = fontsize1 + padding * 2;
 
         var squareSize = Math.max(contentWidth, contentHeight);
-
         canvas.width = squareSize;
         canvas.height = squareSize;
 
         ctx = canvas.getContext('2d');
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (!bgTransparent) {
@@ -90,28 +90,28 @@ function generateImage() {
         ctx.fillStyle = textColor;
 
         var x = (canvas.width - totalTextWidth) / 2;
-        var y = (canvas.height + fontSize * 0.7) / 2;
+        var y = (canvas.height) / 2 + 32;
 
-        ctx.font = fontSize + 'px FontType1';
+        ctx.font = fontsize1 + 'px FontType1';
         ctx.fillText(firstLetter, x, y);
-        x += firstLetterWidth;
+
+        x += firstLetterWidth + (firstLetterWidth * 0.1);
 
         if (middleLetters.length > 0) {
-            ctx.font = fontSize + 'px FontType2';
+            ctx.font = fontsize2 + 'px FontType2';
             ctx.fillText(middleLetters, x, y);
             x += middleLettersWidth;
         }
 
-        ctx.font = fontSize + 'px FontType3';
+        x+=3;
+
+        ctx.font = fontsize3 + 'px FontType3';
         ctx.fillText(lastLetter, x, y);
 
-        // Convert the canvas content to a data URL (PNG image)
         var imageData = canvas.toDataURL('image/png');
 
-        // Display the image in the img tag
         generatedImage.src = imageData;
-        generatedImage.style.display = 'block'; // Show the image so users can long-press to save
-
+        generatedImage.style.display = 'block';
     }).catch(function(error) {
         console.error('Error loading fonts:', error);
         alert('There was an error loading the fonts. Please check the console for more details.');
