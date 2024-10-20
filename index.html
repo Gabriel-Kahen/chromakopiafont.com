@@ -33,18 +33,16 @@
     <div>
         <label for="bgColorInput">Background Color:</label>
         <input type="color" id="bgColorInput" value="#01823f">
-        <label for="bgTransparent">
-            <input type="checkbox" id="bgTransparent">
-            Transparent Background
-        </label>
+        <input type="checkbox" id="bgTransparent">
+        <label for="bgTransparent">Transparent Background</label>
     </div>
     <div>
-        <button id="downloadButton">Download Image</button>
+        <label for="bgImageInput" class="custom-file-upload">Upload Background Image: </label>
+        <input type="file" id="bgImageInput" accept="image/*">
     </div>
     <div>
         <canvas id="wordCanvas" style="display:none;"></canvas>
         <img id="generatedImage" alt="Generated Image">
-    </divd>
     </div>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.standalone.js"></script>
     <script src="script.js"></script>
