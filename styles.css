@@ -100,31 +100,7 @@ input[type="checkbox"] {
         margin: 5px;
     }
     .custom-file-upload {
-        font-size: 16px;
-        font-weight: bold;
+        font-size: 14px;
         margin-right: 10px;
-    }
-    
-    .upload-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #ffffff;
-        background-color: #4CAF50;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        transition: background-color 0.3s ease;
-    }
-    
-    .upload-btn:hover {
-        background-color: #45a049;
-    }
-    
-    .upload-btn:active {
-        background-color: #3e8e41;
-        transform: translateY(2px);
     }
 }
