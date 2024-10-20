@@ -180,6 +180,10 @@ bgTransparentCheckbox.addEventListener('change', function() {
     generateImage();
 });
 
+document.querySelector('.upload-btn').addEventListener('click', function() {
+    document.getElementById('bgImageInput').click();
+});
+
 window.onload = function() {
     initializeCanvas();
 };
