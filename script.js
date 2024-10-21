@@ -111,7 +111,18 @@ function generateImage() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (uploadedBgImage) {
-            ctx.drawImage(uploadedBgImage, 0, 0, canvas.width, canvas.height);
+            var imgWidth = uploadedBgImage.width;
+            var imgHeight = uploadedBgImage.height;
+            var sideLength = Math.min(imgWidth, imgHeight);
+            var sx = (imgWidth - sideLength) / 2;
+            var sy = (imgHeight - sideLength) / 2;
+            ctx.drawImage(
+                uploadedBgImage, // Image
+                sx, sy,          // Source x and y
+                sideLength, sideLength, // Source width and height
+                0, 0,            // Destination x and y on the canvas
+                canvas.width, canvas.height // Destination width and height on the canvas
+            );
             if (!bgTransparent) {
                 ctx.fillStyle = bgColor;
                 ctx.globalAlpha = 0.7;
