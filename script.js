@@ -18,7 +18,6 @@ bgImageInput.addEventListener('change', function(e) {
         img.src = event.target.result;
         img.onload = function() {
             uploadedBgImage = img;
-            // Change "Background Color" to "Background Tint"
             bgColorLabel.textContent = "Background Tint:";
             bgTransparentLabel.textContent = "Remove Tint";
             generateImage();
@@ -35,7 +34,7 @@ function initializeCanvas() {
 
 function handleBgTransparency() {
     if (uploadedBgImage) {
-        bgColorInput.disabled = false;  // Enable tint color input
+        bgColorInput.disabled = false;
     } else {
         var bgTransparent = bgTransparentCheckbox.checked;
         bgColorInput.disabled = bgTransparent;
@@ -58,9 +57,8 @@ function generateImage() {
     word = word.replace(/[^a-zA-Z0-9\s]/g, '').toUpperCase();
     var textColor = textColorInput.value;
     var bgColor = bgColorInput.value;
-    var bgTransparent = bgTransparentCheckbox.checked;  // Check if "Transparent Background" is checked
+    var bgTransparent = bgTransparentCheckbox.checked;
 
-    // Clear the canvas if the text is less than 2 characters
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     var fontsize2 = 100;
@@ -70,19 +68,17 @@ function generateImage() {
     var padding = 50;
     var squareSize = canvas.width = canvas.height = 500;
 
-    // If there is an uploaded image and fewer than 2 letters in the input
     if (uploadedBgImage && word.length < 2) {
-        // Show only the uploaded image with tint
         ctx.drawImage(uploadedBgImage, 0, 0, canvas.width, canvas.height);
         if (!bgTransparent) {
             ctx.fillStyle = bgColor;
-            ctx.globalAlpha = 0.7;  // Tint strength
+            ctx.globalAlpha = 0.7;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
-        ctx.globalAlpha = 1.0;  // Reset alpha for future operations
+        ctx.globalAlpha = 1.0;
         generatedImage.src = canvas.toDataURL('image/png');
         generatedImage.style.display = 'block';
-        return;  // Exit early to avoid drawing any text
+        return;
     }
 
     var font1 = new FontFaceObserver('FontType1');
@@ -115,14 +111,13 @@ function generateImage() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         if (uploadedBgImage) {
-            // Draw uploaded image as background
             ctx.drawImage(uploadedBgImage, 0, 0, canvas.width, canvas.height);
             if (!bgTransparent) {
                 ctx.fillStyle = bgColor;
-                ctx.globalAlpha = 0.7;  // Tint strength
+                ctx.globalAlpha = 0.7;
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
             }
-            ctx.globalAlpha = 1.0;  // Reset alpha for text
+            ctx.globalAlpha = 1.0;
         } else if (!bgTransparentCheckbox.checked) {
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -133,11 +128,9 @@ function generateImage() {
         var x = (canvas.width - totalTextWidth) / 2;
         var y = (canvas.height) / 2 + 32;
 
-        // Draw the first letter
         ctx.font = fontsize1 + 'px FontType1';
         ctx.fillText(firstLetter, x, y);
 
-        // Draw the middle letters
         x += firstLetterWidth + (firstLetterWidth * 0.1);
         if (middleLetters.length > 0) {
             ctx.font = fontsize2 + 'px FontType2';
@@ -145,7 +138,6 @@ function generateImage() {
             x += middleLettersWidth;
         }
 
-        // Draw the last letter
         ctx.font = fontsize3 + 'px FontType3';
         ctx.fillText(lastLetter, x, y);
 
