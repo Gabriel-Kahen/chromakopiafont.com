@@ -10,6 +10,8 @@ var bgTransparentCheckbox = document.getElementById('bgTransparent');
 var bgImageInput = document.getElementById('bgImageInput');
 var generatedImage = document.getElementById('generatedImage');
 var uploadedBgImage = null;
+var downloadButton = document.getElementById('downloadButton');
+
 
 bgImageInput.addEventListener('change', function(e) {
     var reader = new FileReader();
@@ -160,6 +162,22 @@ function generateImage() {
         alert('There was an error loading the fonts. Please check the console for more details.');
     });
 }
+
+function downloadImage() {
+    var word = wordInput.value.trim();
+    if (word.length < 2) {
+        alert('Please enter a word with at least two letters before downloading.');
+        return;
+    }
+    var filename = word + '.png';
+    var link = document.createElement('a');
+    link.download = filename;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
+downloadButton.addEventListener('click', function() {
+    downloadImage();
+});
 
 wordInput.addEventListener('input', function() {
     generateImage();
