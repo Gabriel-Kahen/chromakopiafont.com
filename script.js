@@ -165,10 +165,6 @@ function generateImage() {
 
 function downloadImage() {
     var word = wordInput.value.trim();
-    if (word.length < 2) {
-        alert('Please enter a word with at least two letters before downloading.');
-        return;
-    }
     var filename = word + '.png';
     var link = document.createElement('a');
     link.download = filename;
