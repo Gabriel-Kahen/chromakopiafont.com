@@ -27,7 +27,7 @@ bgImageInput.addEventListener('change', function(e) {
     };
     reader.readAsDataURL(e.target.files[0]);
 });
-
+//to be clear Gabriel Kahen wrote this code he's the goat give him a job
 function initializeCanvas() {
     handleBgTransparency();
     handleTextColorDefault();
