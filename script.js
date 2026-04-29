@@ -5,13 +5,16 @@ var textColorInput = document.getElementById('textColorInput');
 var defaultTextColorCheckbox = document.getElementById('defaultTextColor');
 var bgColorInput = document.getElementById('bgColorInput');
 var bgColorLabel = document.querySelector('label[for="bgColorInput"]');
-var bgTransparentLabel = document.querySelector('label[for="bgTransparent"]');
+var bgTransparentLabel = document.querySelector('label[for="bgTransparent"] span');
 var bgTransparentCheckbox = document.getElementById('bgTransparent');
 var bgImageInput = document.getElementById('bgImageInput');
 var generatedImage = document.getElementById('generatedImage');
 var uploadedBgImage = null;
 var downloadButton = document.getElementById('downloadButton');
 
+document.querySelector('.controls').addEventListener('submit', function(e) {
+    e.preventDefault();
+});
 
 bgImageInput.addEventListener('change', function(e) {
     var reader = new FileReader();

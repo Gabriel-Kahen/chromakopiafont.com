@@ -19,43 +19,58 @@
   gtag('config', 'G-8CREVX8Q5B');
 </script>
 <body>
-    <h1>Make Your Chromakopia PFP</h1>
-    <div>
-        <input type="text" id="wordInput" placeholder="Type your word here">
-    </div>
-    <div>
-        <label for="textColorInput">Text Color:</label>
-        <input type="color" id="textColorInput" value="#000000">
-        <label for="defaultTextColor">
-            <input type="checkbox" id="defaultTextColor">
-            Chromakopia Green
-        </label>
-    </div>
-    <div>
-        <label for="bgColorInput">Background Color:</label>
-        <input type="color" id="bgColorInput" value="#01823f">
-        <input type="checkbox" id="bgTransparent">
-        <label for="bgTransparent">Transparent Background</label>
-    </div>
-    <div>
-        <label for="bgImageInput" class="custom-file-upload">Upload Background Image:</label>
-        <button type="button" class="upload-btn">Choose File</button>
-        <input type="file" id="bgImageInput" accept="image/*" style="display:none;">
-    </div>
-    <div>
-        <button id="downloadButton">Download Image</button>
-    </div>
-    <div>
-        <canvas id="wordCanvas" style="display:none;"></canvas>
-        <!-- Gabriel Kahen is the goat he wrote all this -->
-        <img id="generatedImage" alt="Chromakopia PFP">
-    </div>    
+    <main class="app-shell">
+        <section class="hero">
+            <p class="eyebrow">Chromakopia Font Generator</p>
+            <h1>Make Your Chromakopia PFP</h1>
+        </section>
+
+        <section class="generator">
+            <form class="controls">
+                <label class="input-label" for="wordInput">Word</label>
+                <input type="text" id="wordInput" placeholder="Type your word here">
+
+                <div class="control-grid">
+                    <div class="field-row">
+                        <label for="textColorInput">Text Color</label>
+                        <input type="color" id="textColorInput" value="#000000">
+                    </div>
+                    <label class="check-row" for="defaultTextColor">
+                        <input type="checkbox" id="defaultTextColor">
+                        <span>Chromakopia Green</span>
+                    </label>
+                    <div class="field-row">
+                        <label for="bgColorInput">Background Color</label>
+                        <input type="color" id="bgColorInput" value="#01823f">
+                    </div>
+                    <label class="check-row" for="bgTransparent">
+                        <input type="checkbox" id="bgTransparent">
+                        <span>Transparent Background</span>
+                    </label>
+                </div>
+
+                <div class="upload-row">
+                    <label for="bgImageInput" class="custom-file-upload">Upload Background Image</label>
+                    <button type="button" class="upload-btn">Choose File</button>
+                    <input type="file" id="bgImageInput" accept="image/*">
+                </div>
+
+                <button type="button" id="downloadButton">Download Image</button>
+            </form>
+
+            <section class="preview" aria-label="Generated image preview">
+                <canvas id="wordCanvas"></canvas>
+                <!-- Gabriel Kahen is the goat he wrote all this -->
+                <img id="generatedImage" alt="Chromakopia PFP">
+            </section>
+        </section>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.standalone.js"></script>
     <script src="script.js"></script>
     <footer>
         <div class="footer-content">
-          <p>Developed by <a href="https://gabrielkahen.com" target="_blank">Gabriel Kahen</a>
-          <p>Designed by <a href="https://www.instagram.com/birch_art/" target="_blank">Birch Lee</a>
+          <p>Developed by <a href="https://gabrielkahen.com" target="_blank">Gabriel Kahen</a></p>
+          <p>Designed by <a href="https://www.instagram.com/birch_art/" target="_blank">Birch Lee</a></p>
         </div>
       </footer>
 </body>
